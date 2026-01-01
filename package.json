@@ -4,8 +4,7 @@
   "description": "一个功能强大的在线Base64解码器，支持单个和批量模式，可将Base64编码字符串转换为原始文本或二进制数据",
   "main": "index.html",
   "scripts": {
-    "start": "python -m http.server 8000",
-    "serve": "python -m http.server 8000"
+    "build": "echo 'No build needed for static HTML'"
   },
   "keywords": [
     "base64",
