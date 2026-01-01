@@ -1,0 +1,23 @@
+{
+  "version": 2,
+  "staticAssets": {
+    "assets": [
+      {
+        "src": "/*",
+        "dest": "/"
+      },
+      {
+        "src": "/css/*",
+        "dest": "/css/"
+      },
+      {
+        "src": "/js/*",
+        "dest": "/js/"
+      },
+      {
+        "src": "/images/*",
+        "dest": "/images/"
+      }
+    ]
+  }
+}
