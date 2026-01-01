@@ -113,28 +113,4 @@ Hello Base64!
 2. 直接在浏览器中打开`index.html`文件即可使用
 3. 也可以通过本地Web服务器（如Apache、Nginx）部署
 
-## 测试数据
 
-项目包含两个测试文件，可用于验证工具功能：
-
-- `测试文件1：批量数据解密.csv`：包含批量Base64编码数据
-- `测试文件2：base64解密输出为压缩包文件.txt`：包含二进制文件的Base64编码
-
-## 许可证
-
-本项目采用MIT许可证，详见LICENSE文件。
-
-## 贡献
-
-欢迎提交Issue和Pull Request来改进项目。
-
-## 联系方式
-
-如有问题或建议，欢迎通过以下方式联系：
-
-- 项目地址：[GitHub Repository]
-- 电子邮件：[your-email@example.com]
-
----
-
-**Web Base64 Decoder** - 简单、高效、安全的Base64解码工具
