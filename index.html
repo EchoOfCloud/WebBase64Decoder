@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Base64 Decoder</title>
+    <meta name="description" content="A powerful web-based Base64 decoder tool to quickly convert Base64 encoded strings to original text or binary data. Supports multiple formats and batch processing, perfect for developers and data professionals."
+    <meta name="author" content="">
+    <link rel="icon" type="image/svg+xml" href="">
+    <meta name="msapplication-TileColor" content="#2563eb">
+    <meta name="theme-color" content="#0a6caa">
+    
+    <link href="./css/bootstrap.min.css" rel="stylesheet">
+    <link href="./css/bootstrap-icons.min.css" rel="stylesheet">
+    <link href="./css/style.css" rel="stylesheet">
+    
+    <script src="./js/jquery-3.7.1.min.js"></script>
+    <script src="./js/bootstrap.bundle.min.js"></script>
+    
+    <style>
+        body {
+            font-family: -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Oxygen, Ubuntu, 'Helvetica Neue', Arial, sans-serif;
+        }
+        :root {
+            --bs-link-color-rgb: 000;
+            --bs-link-opacity: 1;
+            --bs-link-hover-color-rgb: 108, 170, 255;
+            --bs-link-hover-opacity: 1;
+        }
+    </style>
+</head>
+<body aria-hidden="false" style="">
+    <!-- Replace your existing navbar section -->
+<nav class="navbar navbar-expand-lg navbar-light fixed-top p-0" style="box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);backdrop-filter: blur(3px) !important;">
+    <div class="container-fluid">
+        <button class="navbar-toggler border-0" type="button" id="sidebarToggle" aria-label="Toggle search sidebar">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="black" class="bi bi-search" viewBox="0 0 16 16">
+                <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"></path>
+            </svg>
+        </button>
+    </div>
+</nav>
+
+<main class="main-content" role="main" style="height: auto !important; min-height: 0px !important;">
+    <div class="container-fluid" style="height: auto !important;">
+        <nav aria-label="breadcrumb" class="mt-1">
+            <ol class="breadcrumb breadcrumb-custom small align-items-center" itemscope="" itemtype="https://schema.org/BreadcrumbList">
+                <li class="breadcrumb-item active d-inline-flex align-items-center" itemprop="itemListElement" itemscope="" itemtype="https://schema.org/ListItem" aria-current="page">
+                    <h1 style="color:#000 !important;background:linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(37, 99, 235, 0.05))" class="h5 fw-bold mb-0 d-inline" itemprop="name">Web Base64 Decoder</h1>
+                    <meta itemprop="position" content="1">
+                </li>
+            </ol>
+        </nav>
+        
+        <style>
+            .breadcrumb-item + .breadcrumb-item::before {
+                content: none;
+            }
+            .breadcrumb-item {
+                margin-right: 0.5rem;
+            }
+            .breadcrumb-custom {
+                flex-wrap: nowrap;
+                overflow-x: auto;
+            }
+            .breadcrumb-custom .breadcrumb-item {
+                flex-shrink: 0;
+            }
+            @media (max-width: 768px) {
+                .breadcrumb-custom {
+                    flex-wrap: nowrap;
+                }
+                .breadcrumb-custom .breadcrumb-item a {
+                    white-space: nowrap;
+                }
+            }
+        </style>
+        
+        <br>
+        
+        <!-- Main Tool Section -->
+        <div class="row g-4" style="height: auto !important;">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <form id="base64DecoderForm" class="mb-4" data-gtm-form-interact-id="0">
+                            <div class="mb-3">
+                                <label class="form-label">Mode Selection</label>
+                <div class="btn-group" role="group" aria-label="Decode Mode">
+                                    <input type="radio" class="btn-check" name="decodeMode" id="singleMode" value="single" checked>
+                                    <label class="btn btn-outline-primary" for="singleMode">Single Mode</label>
+                                    <input type="radio" class="btn-check" name="decodeMode" id="batchMode" value="batch">
+                                    <label class="btn btn-outline-primary" for="batchMode">Batch Mode</label>
+                                </div>
+                            </div>
+                            
+                            <div class="mb-3" id="delimiterSection" style="display: none;">
+                                <label for="delimiter" class="form-label">Delimiter (Default: Newline)</label>
+                                <input type="text" id="delimiter" class="form-control" placeholder="Enter delimiter, leave empty for newline">
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label for="base64Input" class="form-label">Input Base64 String</label>
+                            <textarea id="base64Input" class="form-control" rows="6" placeholder="Paste your Base64 encoded string here..." data-gtm-form-interact-field-id="0"></textarea>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label for="fileName" class="form-label">Filename (Optional)</label>
+                            <input type="text" id="fileName" class="form-control" placeholder="Enter filename if saving as file" data-gtm-form-interact-field-id="1">
+                            </div>
+                            
+                            <div class="btn-group">
+                                <button type="button" id="decodeButton" class="btn btn-primary">
+                                    Decode Base64                                </button>
+                                <button type="button" id="downloadButton" class="btn btn-success">
+                                    Download as File                                </button>
+                                <button type="button" id="copyButton" class="btn btn-info" disabled="">
+                                    Copy to Clipboard                                </button>
+                                <button type="button" id="clearButton" class="btn btn-secondary">
+                                    Clear                                </button>
+                            </div>
+                        </form>
+                        
+                        <div id="resultSection" class="mt-4" style="">
+                            <label class="form-label">Decode Result</label>
+                            <div id="resultContent" class="form-control" style="min-height: 100px; white-space: pre-wrap;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Instructions Section -->
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h3>How to Use Base64 Decoder</h3>
+                        <ul class="list-unstyled">
+                            <li class="mb-2">1. Paste your Base64 encoded string in the input field</li>
+                            <li class="mb-2">2. Click "Decode Base64" to convert the string</li>
+                            <li class="mb-2">3. Choose to copy the decoded text or download as a file</li>
+                            <li class="mb-2">4. For files, enter an optional filename before downloading</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- FAQ Section -->
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h3>Frequently Asked Questions</h3>
+                        <div class="accordion" id="faqAccordion">
+                            <!-- FAQ 1 -->
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                                        What is Base64 encoding?                                    </button>
+                                </h2>
+                                <div id="faq1" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                    <div class="accordion-body">
+                                        Base64 is a method of encoding binary data into ASCII text format. It is commonly used for sending attachments via email, embedding images in web pages, and storing complex data in text format.                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- FAQ 2 -->
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+                                        What types of data can I decode?                                    </button>
+                                </h2>
+                                <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                    <div class="accordion-body">
+                                        You can decode any valid Base64 string, including text, images, documents, and other file types. The tool automatically detects whether the decoded content is text or binary data.                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- FAQ 3 -->
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
+                                        Why isn't my Base64 string decoding correctly?                                    </button>
+                                </h2>
+                                <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                    <div class="accordion-body">
+                                        Please ensure your Base64 string is complete and valid. Common issues include missing padding characters (=), line breaks, or special characters that may have been altered during copying.                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<script>
+$(document).ready(function() {
+    let decodedResult = null;
+    
+    // Mode change handler
+    $('input[name="decodeMode"]').change(function() {
+        if ($(this).val() === 'batch') {
+            $('#delimiterSection').show();
+        } else {
+            $('#delimiterSection').hide();
+        }
+    });
+    
+    // Decode Base64 function
+    function decodeBase64(str) {
+        try {
+            // First try to decode as UTF-8 text
+            const decoded = atob(str);
+            const bytes = new Uint8Array(decoded.length);
+            for (let i = 0; i < decoded.length; i++) {
+                bytes[i] = decoded.charCodeAt(i);
+            }
+            
+            // Check if result is binary by looking for non-printable characters
+            const isBinary = bytes.some(byte => byte < 32 && ![9, 10, 13].includes(byte));
+            
+            if (isBinary) {
+                return {
+                    type: 'binary',
+                    data: bytes
+                };
+            } else {
+                return {
+                    type: 'text',
+                    data: new TextDecoder().decode(bytes)
+                };
+            }
+        } catch (e) {
+            throw new Error('Invalid Base64 string provided');
+        }
+    }
+    
+    // Decode button click handler
+    $('#decodeButton').click(function() {
+        const input = $('#base64Input').val().trim();
+        if (!input) return;
+        
+        try {
+            const selectedMode = $('input[name="decodeMode"]:checked').val();
+            
+            if (selectedMode === 'batch') {
+                // Batch mode processing
+                let delimiter = $('#delimiter').val();
+                // Use newline if delimiter is empty
+                if (!delimiter) {
+                    delimiter = '\n';
+                } else {
+                    // Replace common escape sequences
+                    delimiter = delimiter.replace(/\\n/g, '\n')
+                                        .replace(/\\r/g, '\r')
+                                        .replace(/\\t/g, '\t');
+                }
+                
+                const base64Strings = input.split(delimiter).filter(str => str.trim() !== '');
+                const decodedResults = [];
+                let hasBinary = false;
+                
+                for (const str of base64Strings) {
+                    try {
+                        const result = decodeBase64(str.trim());
+                        if (result.type === 'binary') {
+                            hasBinary = true;
+                            decodedResults.push('Binary content detected');
+                        } else {
+                            decodedResults.push(result.data);
+                        }
+                    } catch (e) {
+                        decodedResults.push(`Error: ${e.message}`);
+                    }
+                }
+                
+                // Combine results with newline separator
+                const combinedResult = decodedResults.join('\n');
+                decodedResult = {
+                    type: 'text',
+                    data: combinedResult
+                };
+                
+                $('#resultContent').text(combinedResult);
+                $('#copyButton').prop('disabled', false);
+                $('#downloadButton').prop('disabled', false);
+            } else {
+                // Single mode processing
+                decodedResult = decodeBase64(input);
+                
+                if (decodedResult.type === 'text') {
+                    $('#resultContent').text(decodedResult.data);
+                    $('#copyButton').prop('disabled', false);
+                    $('#downloadButton').prop('disabled', false);
+                } else {
+                    $('#resultContent').text('Binary content detected. Use download button to save file.');
+                    $('#copyButton').prop('disabled', true);
+                    $('#downloadButton').prop('disabled', false);
+                }
+            }
+            
+            $('#resultSection').show();
+        } catch (e) {
+            alert(e.message);
+        }
+    });
+    
+    // Download button click handler
+    $('#downloadButton').click(function() {
+        if (!decodedResult) return;
+        
+        const fileName = $('#fileName').val().trim() || 'decoded_file';
+        const blob = new Blob([decodedResult.data]);
+        const url = URL.createObjectURL(blob);
+        
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = fileName;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+    });
+    
+    // Copy button click handler
+    $('#copyButton').click(function() {
+        if (!decodedResult || decodedResult.type !== 'text') return;
+        
+        navigator.clipboard.writeText(decodedResult.data).then(() => {
+            const originalText = $(this).text();
+            $(this).text('Copied to clipboard!');
+            setTimeout(() => {
+                $(this).text(originalText);
+            }, 2000);
+        });
+    });
+    
+    // Clear button click handler
+    $('#clearButton').click(function() {
+        $('#base64Input').val('');
+        $('#fileName').val('');
+        $('#delimiter').val('');
+        $('#resultSection').hide();
+        $('#resultContent').text('');
+        decodedResult = null;
+        $('#copyButton').prop('disabled', true);
+        $('#downloadButton').prop('disabled', true);
+        $('#singleMode').prop('checked', true);
+        $('#delimiterSection').hide();
+    });
+});
+</script>
+
+<footer class="footer mt-auto py-4">
+    <div class="container">
+        <div class="tool-description rounded p-3 m-3 border">
+  A powerful web-based Base64 decoder tool to quickly convert Base64 encoded strings to original text or binary data. Supports multiple formats and batch processing, perfect for developers and data professionals.</div>
+    </div>
+</footer>
+</body>
+</html>
