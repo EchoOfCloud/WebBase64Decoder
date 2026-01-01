@@ -4,6 +4,12 @@
 
 **本项目基于 MATE.tools 进行修改和扩展。**
 
+## 阿里云ESA支持
+
+本项目由阿里云ESA提供加速、计算和保护
+
+![阿里云ESA支持](https://img.alicdn.com/imgextra/i3/O1CN01H1UU3i1Cti9lYtFrs_!!6000000000139-2-tps-7534-844.png)
+
 ## 功能特点
 
 - **双模式解码**：支持单条模式和批量模式

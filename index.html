@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Web Base64 Decoder</title>
-    <meta name="description" content="A powerful web-based Base64 decoder tool to quickly convert Base64 encoded strings to original text or binary data. Supports multiple formats and batch processing, perfect for developers and data professionals."
+    <title>Base64解码器 可解码输出文件</title>
+    <meta name="description" content="使用我们的Base64解码器，快速将Base64编码的字符串转换为原始文本或二进制数据。支持多种格式，适合开发者和数据处理人员，轻松实现数据转换，提升工作效率。"
     <meta name="author" content="">
     <link rel="icon" type="image/svg+xml" href="">
     <meta name="msapplication-TileColor" content="#2563eb">
@@ -46,7 +46,7 @@
         <nav aria-label="breadcrumb" class="mt-1">
             <ol class="breadcrumb breadcrumb-custom small align-items-center" itemscope="" itemtype="https://schema.org/BreadcrumbList">
                 <li class="breadcrumb-item active d-inline-flex align-items-center" itemprop="itemListElement" itemscope="" itemtype="https://schema.org/ListItem" aria-current="page">
-                    <h1 style="color:#000 !important;background:linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(37, 99, 235, 0.05))" class="h5 fw-bold mb-0 d-inline" itemprop="name">Web Base64 Decoder</h1>
+                    <h1 style="color:#000 !important;background:linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(37, 99, 235, 0.05))" class="h5 fw-bold mb-0 d-inline" itemprop="name">在线Base64解码器</h1>
                     <meta itemprop="position" content="1">
                 </li>
             </ol>
@@ -85,44 +85,44 @@
                     <div class="card-body">
                         <form id="base64DecoderForm" class="mb-4" data-gtm-form-interact-id="0">
                             <div class="mb-3">
-                                <label class="form-label">Mode Selection</label>
-                <div class="btn-group" role="group" aria-label="Decode Mode">
+                                <label class="form-label">模式选择</label>
+                <div class="btn-group" role="group" aria-label="解码模式">
                                     <input type="radio" class="btn-check" name="decodeMode" id="singleMode" value="single" checked>
-                                    <label class="btn btn-outline-primary" for="singleMode">Single Mode</label>
+                                    <label class="btn btn-outline-primary" for="singleMode">单个模式</label>
                                     <input type="radio" class="btn-check" name="decodeMode" id="batchMode" value="batch">
-                                    <label class="btn btn-outline-primary" for="batchMode">Batch Mode</label>
+                                    <label class="btn btn-outline-primary" for="batchMode">批量模式</label>
                                 </div>
                             </div>
                             
                             <div class="mb-3" id="delimiterSection" style="display: none;">
-                                <label for="delimiter" class="form-label">Delimiter (Default: Newline)</label>
-                                <input type="text" id="delimiter" class="form-control" placeholder="Enter delimiter, leave empty for newline">
+                                <label for="delimiter" class="form-label">分隔符（默认：换行符）</label>
+                                <input type="text" id="delimiter" class="form-control" placeholder="输入分隔符，留空则使用换行符">
                             </div>
                             
                             <div class="mb-3">
-                                <label for="base64Input" class="form-label">Input Base64 String</label>
-                            <textarea id="base64Input" class="form-control" rows="6" placeholder="Paste your Base64 encoded string here..." data-gtm-form-interact-field-id="0"></textarea>
+                                <label for="base64Input" class="form-label">输入 Base64 字符串</label>
+                            <textarea id="base64Input" class="form-control" rows="6" placeholder="在此粘贴您的 Base64 编码字符串..." data-gtm-form-interact-field-id="0"></textarea>
                             </div>
                             
                             <div class="mb-3">
-                                <label for="fileName" class="form-label">Filename (Optional)</label>
-                            <input type="text" id="fileName" class="form-control" placeholder="Enter filename if saving as file" data-gtm-form-interact-field-id="1">
+                                <label for="fileName" class="form-label">文件名（可选）</label>
+                            <input type="text" id="fileName" class="form-control" placeholder="如果保存为文件，请输入文件名" data-gtm-form-interact-field-id="1">
                             </div>
                             
                             <div class="btn-group">
                                 <button type="button" id="decodeButton" class="btn btn-primary">
-                                    Decode Base64                                </button>
+                                    解码 Base64                                </button>
                                 <button type="button" id="downloadButton" class="btn btn-success">
-                                    Download as File                                </button>
+                                    下载为文件                                </button>
                                 <button type="button" id="copyButton" class="btn btn-info" disabled="">
-                                    Copy to Clipboard                                </button>
+                                    复制到剪贴板                                </button>
                                 <button type="button" id="clearButton" class="btn btn-secondary">
-                                    Clear                                </button>
+                                    清除                                </button>
                             </div>
                         </form>
                         
                         <div id="resultSection" class="mt-4" style="">
-                            <label class="form-label">Decode Result</label>
+                            <label class="form-label">解码结果</label>
                             <div id="resultContent" class="form-control" style="min-height: 100px; white-space: pre-wrap;"></div>
                         </div>
                     </div>
@@ -133,12 +133,12 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-body">
-                        <h3>How to Use Base64 Decoder</h3>
+                        <h3>如何使用 Base64 解码器</h3>
                         <ul class="list-unstyled">
-                            <li class="mb-2">1. Paste your Base64 encoded string in the input field</li>
-                            <li class="mb-2">2. Click "Decode Base64" to convert the string</li>
-                            <li class="mb-2">3. Choose to copy the decoded text or download as a file</li>
-                            <li class="mb-2">4. For files, enter an optional filename before downloading</li>
+                            <li class="mb-2">1. 在输入字段中粘贴您的 Base64 编码字符串</li>
+                            <li class="mb-2">2. 点击“解码 Base64”转换字符串</li>
+                            <li class="mb-2">3. 选择复制解码后的文本或下载为文件</li>
+                            <li class="mb-2">4. 对于文件，下载前输入可选的文件名</li>
                         </ul>
                     </div>
                 </div>
@@ -148,17 +148,17 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-body">
-                        <h3>Frequently Asked Questions</h3>
+                        <h3>常见问题解答</h3>
                         <div class="accordion" id="faqAccordion">
                             <!-- FAQ 1 -->
                             <div class="accordion-item">
                                 <h2 class="accordion-header">
                                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
-                                        What is Base64 encoding?                                    </button>
+                                        什么是 Base64 编码？                                    </button>
                                 </h2>
                                 <div id="faq1" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
                                     <div class="accordion-body">
-                                        Base64 is a method of encoding binary data into ASCII text format. It is commonly used for sending attachments via email, embedding images in web pages, and storing complex data in text format.                                    </div>
+                                        Base64 是一种将二进制数据转换为 ASCII 文本格式的编码方法。它常用于通过电子邮件发送附件、在网页中嵌入图像以及以文本格式存储复杂数据。                                    </div>
                                 </div>
                             </div>
                             
@@ -166,11 +166,11 @@
                             <div class="accordion-item">
                                 <h2 class="accordion-header">
                                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
-                                        What types of data can I decode?                                    </button>
+                                        我可以解码哪些类型的数据？                                    </button>
                                 </h2>
                                 <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
                                     <div class="accordion-body">
-                                        You can decode any valid Base64 string, including text, images, documents, and other file types. The tool automatically detects whether the decoded content is text or binary data.                                    </div>
+                                        您可以解码任何有效的 Base64 字符串，包括文本、图像、文档和其他文件类型。该工具会自动检测解码内容是文本还是二进制数据。                                    </div>
                                 </div>
                             </div>
                             
@@ -178,11 +178,11 @@
                             <div class="accordion-item">
                                 <h2 class="accordion-header">
                                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
-                                        Why isn't my Base64 string decoding correctly?                                    </button>
+                                        为什么我的 Base64 字符串无法正确解码？                                    </button>
                                 </h2>
                                 <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
                                     <div class="accordion-body">
-                                        Please ensure your Base64 string is complete and valid. Common issues include missing padding characters (=), line breaks, or special characters that may have been altered during copying.                                    </div>
+                                        请确保您的 Base64 字符串完整且有效。常见问题包括缺少填充字符 (=)、换行符或在复制过程中可能已更改的特殊字符。                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -231,7 +231,7 @@ $(document).ready(function() {
                 };
             }
         } catch (e) {
-            throw new Error('Invalid Base64 string provided');
+            throw new Error('提供的 Base64 字符串无效');
         }
     }
     
@@ -265,12 +265,12 @@ $(document).ready(function() {
                         const result = decodeBase64(str.trim());
                         if (result.type === 'binary') {
                             hasBinary = true;
-                            decodedResults.push('Binary content detected');
+                            decodedResults.push('检测到二进制内容');
                         } else {
                             decodedResults.push(result.data);
                         }
                     } catch (e) {
-                        decodedResults.push(`Error: ${e.message}`);
+                        decodedResults.push(`错误: ${e.message}`);
                     }
                 }
                 
@@ -293,7 +293,7 @@ $(document).ready(function() {
                     $('#copyButton').prop('disabled', false);
                     $('#downloadButton').prop('disabled', false);
                 } else {
-                    $('#resultContent').text('Binary content detected. Use download button to save file.');
+                    $('#resultContent').text('检测到二进制内容。使用下载按钮保存文件。');
                     $('#copyButton').prop('disabled', true);
                     $('#downloadButton').prop('disabled', false);
                 }
@@ -328,7 +328,7 @@ $(document).ready(function() {
         
         navigator.clipboard.writeText(decodedResult.data).then(() => {
             const originalText = $(this).text();
-            $(this).text('Copied to clipboard!');
+            $(this).text('已复制到剪贴板！');
             setTimeout(() => {
                 $(this).text(originalText);
             }, 2000);
@@ -354,7 +354,7 @@ $(document).ready(function() {
 <footer class="footer mt-auto py-4">
     <div class="container">
         <div class="tool-description rounded p-3 m-3 border">
-  A powerful web-based Base64 decoder tool to quickly convert Base64 encoded strings to original text or binary data. Supports multiple formats and batch processing, perfect for developers and data professionals.</div>
+  使用我们的Base64解码器，快速将Base64编码的字符串转换为原始文本或二进制数据。支持多种格式，适合开发者和数据处理人员，轻松实现数据转换，提升工作效率。</div>
     </div>
 </footer>
 </body>
