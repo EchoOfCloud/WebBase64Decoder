@@ -30,9 +30,6 @@ Base64解码器网页 可解码输出文件/
 │   ├── bootstrap-icons.min.css    # Bootstrap图标样式
 │   ├── bootstrap.min.css          # Bootstrap核心样式
 │   └── style.css                  # 自定义样式
-├── images/
-│   ├── mate.png                   # 图片资源
-│   └── thumbs.db                  # 系统缩略图数据库
 ├── js/
 │   ├── bootstrap.bundle.min.js    # Bootstrap JS捆绑包
 │   └── jquery-3.7.1.min.js        # jQuery库
