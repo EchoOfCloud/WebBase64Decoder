@@ -45,6 +45,8 @@ Base64解码器网页 可解码输出文件/
 └── 测试文件2：base64解密输出为压缩包文件.txt  # 测试数据文件
 ```
 
+
+
 ## 使用方法
 
 ### 单条模式
@@ -117,3 +119,8 @@ Hello Base64!
 3. 也可以通过本地Web服务器（如Apache、Nginx）部署
 
 
+# 作者信息
+
+- **作者**：EchoOfCloud
+- **GitHub**：https://github.com/EchoOfCloud
+- **CSDN**：https://blog.csdn.net/qq_37400312
